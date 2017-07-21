@@ -14,11 +14,11 @@
     <script src="scripts/controllers/sale.controller.js" charset="utf-8"></script>
   </head>
   <body ng-app="myApp">
-    <div ng-include="'/views/templates/nav.html'">
-
-    </div>
+    <header>
+      <div ng-include="'/views/templates/nav.html'"></div>
+    </header>
     <div class="container">
-
+      <div ng-view></div>
     </div>
   </body>
 </html>

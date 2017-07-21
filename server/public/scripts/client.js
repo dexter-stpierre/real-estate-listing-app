@@ -9,7 +9,7 @@ myApp.config(function($routeProvider){
       controllerAs: "rc",
       templateUrl: "/views/templates/rental.html"
     })
-    .when('/contact', {
+    .when('/sale', {
       controller: 'SaleController as sc',
       templateUrl: '/views/templates/sale.html'
     })
