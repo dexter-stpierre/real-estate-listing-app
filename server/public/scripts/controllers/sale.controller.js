@@ -8,4 +8,11 @@ myApp.controller("SaleController", function($http){
       });
     }
   sc.getListings();
+  sc.updateListing = function(listing){
+    console.log(listing);
+    $http.put('/sale', listing)
+      .then(function(response){
+        sc.getListings();
+    })
+  }
 })

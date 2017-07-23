@@ -1,5 +1,5 @@
 <div class="">
-  <table class="table">
+  <table class="table table-bordered table-hover table-condensed">
     <thead>
       <th>Rent</th>
       <th>Sq Feet</th>
@@ -7,9 +7,23 @@
     </thead>
     <tbody>
       <tr ng-repeat="rental in rc.rentals">
-        <td>{{rental.rent}}</td>
-        <td>{{rental.sqft}}</td>
-        <td>{{rental.city}}</td>
+        <td><span ng-show="!rowform.$visible" editable-text="rental.rent" e-form="rowform" e-name="rent">{{rental.rent}}</span></td>
+        <td><span ng-show="!rowform.$visible" editable-text="rental.sqft" e-form="rowform">{{rental.sqft}}</span></td>
+        <td><span ng-show="!rowform.$visible" editable-text="rental.city" e-form="rowform">{{rental.city}}</span></td>
+        <td>
+        <form onaftersave="rc.updaterental(rental)" editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == rental">
+          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+            save
+          </button>
+          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+            cancel
+          </button>
+        </form>
+        <div ng-show="!rowform.$visible">
+          <button type="button" ng-click="rowform.$show()">Edit</button>
+          <button type="button" name="button">Delete</button>
+        </div>
+      </td>
       </tr>
     </tbody>
   </table>

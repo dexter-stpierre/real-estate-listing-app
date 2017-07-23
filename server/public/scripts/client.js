@@ -1,5 +1,6 @@
 console.log("js sourced");
-var myApp = angular.module("myApp", ['ngRoute']);
+var myApp = angular.module("myApp", ['ngRoute', 'xeditable']);
+
 myApp.config(function($routeProvider){
 
   //define out routes and point them at a controller

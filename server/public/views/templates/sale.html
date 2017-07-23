@@ -1,15 +1,30 @@
 <div class="">
-  <table class="table">
+  <table class="table table-bordered table-hover table-condensed">
     <thead>
-      <th>Cost</th>
-      <th>Sq Feet</th>
-      <th>City</th>
+      <th style="width:35%">Cost</th>
+      <th style="width:20%">Sq Feet</th>
+      <th style="width:20%">City</th>
+      <th style="width:25%"></th>
     </thead>
     <tbody>
       <tr ng-repeat="listing in sc.listings">
-        <td>{{listing.cost}}</td>
-        <td>{{listing.sqft}}</td>
-        <td>{{listing.city}}</td>
+        <td><span ng-show="!rowform.$visible" editable-text="listing.cost" e-form="rowform" e-name="cost">{{listing.cost}}</span></td>
+        <td><span ng-show="!rowform.$visible" editable-text="listing.sqft" e-form="rowform">{{listing.sqft}}</span></td>
+        <td><span ng-show="!rowform.$visible" editable-text="listing.city" e-form="rowform">{{listing.city}}</span></td>
+        <td>
+        <form onaftersave="sc.updateListing(listing)" editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == listing">
+          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+            save
+          </button>
+          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+            cancel
+          </button>
+        </form>
+        <div ng-show="!rowform.$visible">
+          <button type="button" ng-click="rowform.$show()">Edit</button>
+          <button type="button" name="button">Delete</button>
+        </div>
+      </td>
       </tr>
     </tbody>
   </table>

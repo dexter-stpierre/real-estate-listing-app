@@ -4,7 +4,7 @@ myApp.controller("RentalController", function($http){
   rc.getRentals = function(){
     $http.get('/rental').then(function(response){
       console.log(response.data);
-      rc.rentals = response.data
+      rc.rentals = response.data;
     })
   }
   rc.getRentals();

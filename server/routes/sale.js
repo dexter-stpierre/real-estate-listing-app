@@ -4,6 +4,27 @@ var Sale = require('../models/sale.schema.js')
 
 console.log('sale route loaded');
 
+router.put('/', function(req, res){
+  console.log('put data:', req.body);
+  var updateListing = new Sale(req.body);
+  Sale.findByIdAndUpdate(
+    { _id: updateListing.id },
+    { $set:
+      { cost: updateListing.cost,
+        sqft: updateListing.sqft,
+        city: updateListing.city}
+    },
+    function(err, data) {
+      if(err) {
+        console.log('update error:', err);
+        res.sendStatus(500);
+      } else{
+        res.sendStatus(200);
+      }
+    }
+  );
+});
+
 router.get('/', function(req, res){
   Sale.find({}, function(err, data) {
     if(err) {

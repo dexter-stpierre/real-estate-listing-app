@@ -4,6 +4,8 @@ var Rental = require('../models/rental.schema.js');
 
 console.log('rental controller loaded');
 
+
+
 router.post('/', function(req, res){
   console.log('post data:', req.body);
   var newListing = new Rental(req.body);
