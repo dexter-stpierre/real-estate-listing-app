@@ -19,7 +19,8 @@ myApp.controller("RentalController", function($http){
 
   rc.deleteRental = function(id){
     console.log(id);
-    $http.delete('/rental/' + id).then(function(){
+    $http.delete('/rental/' + id).then(function(response){
+      console.log(response);
       rc.getRentals();
     })
   }

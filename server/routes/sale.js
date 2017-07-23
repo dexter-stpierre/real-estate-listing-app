@@ -4,6 +4,23 @@ var Sale = require('../models/sale.schema.js')
 
 console.log('sale route loaded');
 
+router.delete('/:id', function(req, res) {
+  console.log('delete with id: ', req.params.id);
+
+  Sale.findByIdAndRemove(
+    { _id: req.params.id }, // how do i find this document?
+    function(err, data) {
+      if(err) {
+        console.log('remove error: ', err);
+        res.sendStatus(500);
+      } else {
+        res.sendStatus(200);
+      }
+    }
+  )
+
+});
+
 router.put('/', function(req, res){
   console.log('put data:', req.body);
   var updateListing = new Sale(req.body);
