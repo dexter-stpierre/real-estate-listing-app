@@ -4,7 +4,26 @@ var Rental = require('../models/rental.schema.js');
 
 console.log('rental controller loaded');
 
-
+router.put('/', function(req, res){
+  console.log('put data:', req.body);
+  var updateListing = new Rental(req.body);
+  Rental.findByIdAndUpdate(
+    { _id: updateListing.id },
+    { $set:
+      { rent: updateListing.rent,
+        sqft: updateListing.sqft,
+        city: updateListing.city}
+    },
+    function(err, data) {
+      if(err) {
+        console.log('update error:', err);
+        res.sendStatus(500);
+      } else{
+        res.sendStatus(200);
+      }
+    }
+  );
+});
 
 router.post('/', function(req, res){
   console.log('post data:', req.body);

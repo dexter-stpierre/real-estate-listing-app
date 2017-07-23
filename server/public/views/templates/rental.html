@@ -4,6 +4,7 @@
       <th>Rent</th>
       <th>Sq Feet</th>
       <th>City</th>
+      <th></th>
     </thead>
     <tbody>
       <tr ng-repeat="rental in rc.rentals">
@@ -11,7 +12,7 @@
         <td><span ng-show="!rowform.$visible" editable-text="rental.sqft" e-form="rowform">{{rental.sqft}}</span></td>
         <td><span ng-show="!rowform.$visible" editable-text="rental.city" e-form="rowform">{{rental.city}}</span></td>
         <td>
-        <form onaftersave="rc.updaterental(rental)" editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == rental">
+        <form onaftersave="rc.updateRental(rental)" editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == rental">
           <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
             save
           </button>

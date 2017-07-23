@@ -8,4 +8,12 @@ myApp.controller("RentalController", function($http){
     })
   }
   rc.getRentals();
+
+  rc.updateRental = function(listing){
+    console.log(listing);
+    $http.put('/rental', listing).then(function(response){
+      console.log(response);
+      rc.getRentals();
+    })
+  }
 })
