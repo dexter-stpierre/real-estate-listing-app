@@ -22,7 +22,7 @@
         </form>
         <div ng-show="!rowform.$visible">
           <button type="button" ng-click="rowform.$show()">Edit</button>
-          <button type="button" name="button">Delete</button>
+          <button type="button" name="button" ng-click="rc.deleteRental(rental._id)">Delete</button>
         </div>
       </td>
       </tr>

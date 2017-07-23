@@ -16,4 +16,11 @@ myApp.controller("RentalController", function($http){
       rc.getRentals();
     })
   }
+
+  rc.deleteRental = function(id){
+    console.log(id);
+    $http.delete('/rental/' + id).then(function(){
+      rc.getRentals();
+    })
+  }
 })
