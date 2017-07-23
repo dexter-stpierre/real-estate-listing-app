@@ -3,11 +3,17 @@ var app = express();
 var port = process.env.PORT || 5000;
 var path = require("path");
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
+var sale = require('./routes/sale');
+var rental = require('./routes/rental');
 
 //MIDDLEWARE
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, './public')));
+
+//EXPRESS ROUTES
+app.use('/sale', sale);
+app.use('/rental', rental);
 
 //MONGOOSE CONNECTION
 var databaseUrl = 'mongodb://localhost:27017/realestate';
