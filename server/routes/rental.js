@@ -1,11 +1,25 @@
 var express = require('express');
 var router = express.Router();
-var rental = require('../models/rental.schema.js');
+var Rental = require('../models/rental.schema.js');
 
 console.log('rental controller loaded');
 
+router.post('/', function(req, res){
+  console.log('post data:', req.body);
+  var newListing = new Rental(req.body);
+  newListing.save(function(err, data) {
+    console.log('saved data:', data);
+    if(err){
+      console.log('save error:', err);
+      res.sendStatus(500);
+    } else{
+      res.sendStatus(200);
+    }
+  });
+});
+
 router.get('/', function(req, res){
-  rental.find({}, function(err, data) {
+  Rental.find({}, function(err, data) {
     if(err) {
       console.log('find error:', err);
       res.sendStatus(500);

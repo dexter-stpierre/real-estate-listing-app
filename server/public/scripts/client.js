@@ -13,6 +13,10 @@ myApp.config(function($routeProvider){
       controller: 'SaleController as sc',
       templateUrl: '/views/templates/sale.html'
     })
+    .when('/new', {
+      controller: 'NewListingController as nlc',
+      templateUrl: '/views/templates/new.html'
+    })
     .otherwise({
       redirectTo: "sale"
     });

@@ -17,6 +17,20 @@ router.get('/', function(req, res){
   })
 })
 
+router.post('/', function(req, res){
+  console.log('post data:', req.body);
+  var newListing = new Sale(req.body);
+  newListing.save(function(err, data) {
+    console.log('saved data:', data);
+    if(err){
+      console.log('save error:', err);
+      res.sendStatus(500);
+    } else{
+      res.sendStatus(200);
+    }
+  });
+});
+
 console.log('sale router finished');
 
 module.exports = router;

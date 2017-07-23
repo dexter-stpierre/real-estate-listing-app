@@ -1,0 +1,17 @@
+<div class="">
+  <label>Cost
+    <input type="number" ng-model="nlc.newListing.cost" placeholder="Cost">
+  </label>
+  <label>Sq Feet
+    <input type="number" ng-model="nlc.newListing.sqft" placeholder="Sq Feet">
+  </label>
+  <label>City
+    <input type="text" ng-model="nlc.newListing.city" placeholder="City">
+  </label>
+  <label>Type of Listing
+    <select ng-model="nlc.newListing.type">
+      <option value="sale">Sell</option>
+      <option value="rental">Rent</option>
+    </select>
+  <button type="button" ng-click="nlc.submitNewListing(nlc.newListing)">Submit</button>
+</div>
