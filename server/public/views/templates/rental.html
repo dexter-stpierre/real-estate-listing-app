@@ -8,21 +8,23 @@
     </thead>
     <tbody>
       <tr ng-repeat="rental in rc.rentals">
-        <td><span ng-show="!rowform.$visible" editable-text="rental.rent" e-form="rowform" e-name="rent">{{rental.rent}}</span></td>
+        <!-- Each piece of data hides when the table is switched to edit mode and a text box with the current values are displayed-->
+        <td><span ng-show="!rowform.$visible" editable-text="rental.rent" e-form="rowform">{{rental.rent}}</span></td>
         <td><span ng-show="!rowform.$visible" editable-text="rental.sqft" e-form="rowform">{{rental.sqft}}</span></td>
         <td><span ng-show="!rowform.$visible" editable-text="rental.city" e-form="rowform">{{rental.city}}</span></td>
         <td>
+          <!-- makes the table row that was clicked on editable, hides edit/delete button, and displayes save/cancel buttons. change will be sent to the server once the changes are saved locally -->
         <form onaftersave="rc.updateRental(rental)" editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == rental">
-          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
-            save
+          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-success">
+            Save
           </button>
           <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
             cancel
           </button>
         </form>
         <div ng-show="!rowform.$visible">
-          <button type="button" ng-click="rowform.$show()">Edit</button>
-          <button type="button" name="button" ng-click="rc.deleteRental(rental._id)">Delete</button>
+          <button type="button" class="btn btn-primary" ng-click="rowform.$show()">Edit</button>
+          <button type="button" class="btn btn-danger" name="button" ng-click="rc.deleteRental(rental._id)">Delete</button>
         </div>
       </td>
       </tr>

@@ -4,6 +4,7 @@ var Sale = require('../models/sale.schema.js')
 
 console.log('sale route loaded');
 
+// deletes listing
 router.delete('/:id', function(req, res) {
   console.log('delete with id: ', req.params.id);
 
@@ -21,6 +22,7 @@ router.delete('/:id', function(req, res) {
 
 });
 
+// updates listing
 router.put('/', function(req, res){
   console.log('put data:', req.body);
   var updateListing = new Sale(req.body);
@@ -42,6 +44,7 @@ router.put('/', function(req, res){
   );
 });
 
+// returns all listings
 router.get('/', function(req, res){
   Sale.find({}, function(err, data) {
     if(err) {
@@ -55,6 +58,7 @@ router.get('/', function(req, res){
   })
 })
 
+// adds new listing
 router.post('/', function(req, res){
   console.log('post data:', req.body);
   var newListing = new Sale(req.body);

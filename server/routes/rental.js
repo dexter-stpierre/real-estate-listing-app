@@ -4,6 +4,7 @@ var Rental = require('../models/rental.schema.js');
 
 console.log('rental controller loaded');
 
+//deletes selected listing
 router.delete('/:id', function(req, res) {
   console.log('delete with id: ', req.params.id);
 
@@ -21,6 +22,7 @@ router.delete('/:id', function(req, res) {
 
 });
 
+// updates listing
 router.put('/', function(req, res){
   console.log('put data:', req.body);
   var updateListing = new Rental(req.body);
@@ -42,6 +44,7 @@ router.put('/', function(req, res){
   );
 });
 
+// adds listing
 router.post('/', function(req, res){
   console.log('post data:', req.body);
   var newListing = new Rental(req.body);
@@ -56,6 +59,7 @@ router.post('/', function(req, res){
   });
 });
 
+// returns all listings
 router.get('/', function(req, res){
   Rental.find({}, function(err, data) {
     if(err) {

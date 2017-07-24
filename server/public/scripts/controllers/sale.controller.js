@@ -3,6 +3,7 @@ myApp.controller("SaleController", function($http){
 
   var sc = this;
 
+  // returns all listings to display on DOM
   sc.getListings = function() {
       $http.get('/sale').then(function(response) {
         console.log(response.data);
@@ -12,6 +13,7 @@ myApp.controller("SaleController", function($http){
 
   sc.getListings();
 
+  // updates listing
   sc.updateListing = function(listing){
     console.log(listing);
     $http.put('/sale', listing)
@@ -20,6 +22,7 @@ myApp.controller("SaleController", function($http){
     })
   }
 
+  // deletes listing
   sc.deleteListing = function(id){
     console.log(id);
     $http.delete('/sale/' + id).then(function(response){

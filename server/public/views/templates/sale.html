@@ -13,16 +13,16 @@
         <td><span ng-show="!rowform.$visible" editable-text="listing.city" e-form="rowform">{{listing.city}}</span></td>
         <td>
         <form onaftersave="sc.updateListing(listing)" editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == listing">
-          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
-            save
+          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-success">
+            Save
           </button>
           <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
             cancel
           </button>
         </form>
         <div ng-show="!rowform.$visible">
-          <button type="button" ng-click="rowform.$show()">Edit</button>
-          <button type="button" name="button" ng-click="sc.deleteListing(listing._id)">Delete</button>
+          <button type="button" class="btn btn-primary" ng-click="rowform.$show()">Edit</button>
+          <button type="button" class="btn btn-danger" name="button" ng-click="sc.deleteListing(listing._id)">Delete</button>
         </div>
       </td>
       </tr>
