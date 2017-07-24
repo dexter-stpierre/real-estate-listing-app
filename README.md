@@ -16,3 +16,9 @@
 - Bootstrap
 - HTML
 - JavaScript
+
+## To-Do's:
+
+- add additional styling
+- add ability to book a showing
+- add ability to make an offer
